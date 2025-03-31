@@ -1,37 +1,80 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# ConvoQuest: Your Journey Through AI-Powered Interview Conversations
 
-## Getting Started
+ConvoQuest is a job interview preparation platform powered by **Vapi AI Voice Agents**. It provides real-time AI-driven mock interviews, feedback analysis, and a seamless user experience. Built with **Next.js**, **Firebase**, and **TailwindCSS**, ConvoQuest ensures an engaging and efficient way to practice interviews.
 
-First, run the development server:
+## 🚀 Features
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+### 🔐 Authentication
+- Sign Up & Sign In using Firebase authentication (email/password).
+
+### 🎙️ AI-Powered Mock Interviews
+- Generate job interview sessions with **Vapi AI Voice Agents**.
+- Conduct real-time **voice-based** AI interviews.
+
+### 📊 AI Feedback & Analysis
+- Get **instant feedback** on your responses.
+- AI-driven analysis helps improve your **interview skills**.
+
+### 🎨 Modern UI/UX
+- Fully responsive design using **TailwindCSS**.
+- Interactive dashboard to manage interviews.
+
+### 📌 Dashboard & Interview Management
+- View past interviews and track your progress.
+- Organize interviews efficiently.
+
+---
+
+## ⚙️ Tech Stack
+- **Next.js** (Frontend & Backend)
+- **Vapi AI** (Voice Agents for AI-driven interviews)
+- **Firebase** (Authentication & Database)
+- **Tailwind CSS** (UI/UX Design)
+- **Google Gemini API** (AI Analysis)
+- **shadcn/ui** (Reusable UI components)
+- **Zod** (Schema validation)
+
+---
+
+## 🚀 Getting Started
+
+### **Prerequisites**
+Make sure you have the following installed:
+- **Node.js** (v16+ recommended)
+- **Git**
+
+### **Clone the Repository**
+```sh
+git clone https://github.com/your-username/convoquest.git
+cd convoquest
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+### **Install Dependencies**
+```sh
+npm install
+```
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+### **Set Up Environment Variables**
+Create a new file named `.env.local` in the root of your project and add the following:
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+```sh
+NEXT_PUBLIC_VAPI_WEB_TOKEN=your_vapi_web_token
+NEXT_PUBLIC_VAPI_WORKFLOW_ID=your_vapi_workflow_id
+GOOGLE_GENERATIVE_AI_API_KEY=your_google_gemini_api_key
+NEXT_PUBLIC_FIREBASE_API_KEY=your_firebase_api_key
+NEXT_PUBLIC_FIREBASE_AUTH_DOMAIN=your_firebase_auth_domain
+NEXT_PUBLIC_FIREBASE_PROJECT_ID=your_firebase_project_id
+NEXT_PUBLIC_FIREBASE_STORAGE_BUCKET=your_firebase_storage_bucket
+NEXT_PUBLIC_FIREBASE_MESSAGING_SENDER_ID=your_firebase_messaging_sender_id
+NEXT_PUBLIC_FIREBASE_APP_ID=your_firebase_app_id
+FIREBASE_PROJECT_ID=your_firebase_project_id
+FIREBASE_CLIENT_EMAIL=your_firebase_client_email
+FIREBASE_PRIVATE_KEY=your_firebase_private_key
+```
+🔹 Replace placeholder values with your actual credentials.
 
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
-# ConvoQuest
+### **Run the Development Server**
+```sh
+npm run dev
+```
+- Open **http://localhost:3000** in your browser.
