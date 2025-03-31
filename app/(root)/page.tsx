@@ -4,8 +4,20 @@ import React from 'react'
 import Image from 'next/image'
 import { dummyInterviews } from '@/constants'
 import InterviewCard from '@/components/InterviewCard'
+import { getCurrentUser, getInterviewsByUserId, getLatestInterviews } from '@/lib/actions/auth.action'
 
-const page = () => {
+const page = async() => {
+
+  const user = await getCurrentUser();
+  const [userInterviews, LatestInterviews] = await Promise.all([
+    getInterviewsByUserId(user?.id!),
+    getLatestInterviews({ userId: user?.id! }),
+  ]);
+
+  const hasPastInterviews = userInterviews?.length>0;
+  const hasUpcomingInterviews = LatestInterviews?.length>0;
+
+
   return (
     <>
     <section className='card-cta'>
@@ -22,22 +34,47 @@ const page = () => {
     <section className='flex flex-col gap-6 mt-8'>
       <h2>Your Interviews</h2>
 
-      <div className='interviews-section'>
-        {dummyInterviews.map((interview)=>(<InterviewCard {...interview} key={interview.id} />))}
-      </div>
+      <div className="interviews-section">
+          {hasPastInterviews ? (
+            userInterviews?.map((interview) => (
+              <InterviewCard
+                key={interview.id}
+                userId={user?.id}
+                interviewId={interview.id}
+                role={interview.role}
+                type={interview.type}
+                techstack={interview.techstack}
+                createdAt={interview.createdAt}
+              />
+            ))
+          ) : (
+            <p>You haven&apos;t taken any interviews yet</p>
+          )}
+        </div>
+      </section>
+      <section className="flex flex-col gap-6 mt-8">
+        <h2>Take Interviews</h2>
 
-    </section>
-
-    <section className='flex flex-col gap-6 mt-8'>
-      <h2>Take an Interview</h2>
-      <div className='interviews-section'>
-      {dummyInterviews.map((interview)=>(<InterviewCard {...interview} key={interview.id}/>))}
-      <p>You haven&apos;t taken any interviews yet.</p>
-      </div>
-
-    </section>
+        <div className="interviews-section">
+          {hasUpcomingInterviews ? (
+            LatestInterviews?.map((interview) => (
+              <InterviewCard
+                key={interview.id}
+                userId={user?.id}
+                interviewId={interview.id}
+                role={interview.role}
+                type={interview.type}
+                techstack={interview.techstack}
+                createdAt={interview.createdAt}
+              />
+            ))
+          ) : (
+            <p>There are no interviews available</p>
+          )}
+        </div>
+      </section>
     </>
-  )
+  );
 }
 
 export default page
